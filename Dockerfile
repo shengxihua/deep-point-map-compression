@@ -18,10 +18,6 @@ RUN apt-get update && apt-get install -y \
     vim 
 
 # Install Pytorch with CUDA 11 support
-RUN pip install \
-    torchvision==0.8.2+cu110 \
-    torchaudio==0.7.2 \
-    -f https://download.pytorch.org/whl/torch_stable.html
 
 # Install python dependencies
 RUN pip install \
@@ -34,8 +30,8 @@ RUN pip install \
 COPY ./ depoco/
 
 # Install depoco and 3rdparty dependencies
-RUN cd depoco/ && pip3 install -U -e .
-RUN cd depoco/submodules/octree_handler && pip3 install -U .
-RUN cd depoco/submodules/ChamferDistancePytorch/chamfer3D/ && pip3 install -U . 2>/dev/null
+RUN cd depoco/ && pip install -U -e .
+RUN cd depoco/submodules/octree_handler && pip install -U .
+RUN cd depoco/submodules/ChamferDistancePytorch/chamfer3D/ && pip install -U . 2>/dev/null
 
 WORKDIR /depoco/depoco
