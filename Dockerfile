@@ -21,10 +21,7 @@ RUN apt-get update && apt-get install -y \
 
 # Install python dependencies
 RUN pip install \
-    open3d  \
-    tensorboard \
-    ruamel.yaml \
-    jupyterlab
+    ruamel.yaml
 
 # Copy the libary to the docker image
 COPY ./ depoco/
