@@ -20,9 +20,6 @@ RUN apt-get update && apt-get install -y \
     libusb-1.0-0-dev \
     ninja-build \
     pybind11-dev \
-    python3 \
-    python3-dev \
-    python3-pip \
     vim \
     && rm -rf /var/lib/apt/lists/*
 
@@ -32,8 +29,8 @@ RUN apt-get update && apt-get install -y \
 COPY ./ depoco/
 
 # Install depoco and 3rdparty dependencies
-RUN cd depoco/ && pip3 install -U -e .
-RUN cd depoco/submodules/octree_handler && pip3 install -U .
-RUN cd depoco/submodules/ChamferDistancePytorch/chamfer3D/ && pip3 install -U . 2>/dev/null
+RUN cd depoco/ && pip install -U -e .
+RUN cd depoco/submodules/octree_handler && pip install -U .
+RUN cd depoco/submodules/ChamferDistancePytorch/chamfer3D/ && pip install -U . 2>/dev/null
 
 WORKDIR /depoco/depoco
